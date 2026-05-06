@@ -1,0 +1,25 @@
+name: ci.yml
+on:
+  push:
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    step:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: action/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - run: mvn clean verify
+
+      - name: Upload jar
+        uses: action/upload-artifact@v4
+        if: alway()
+        with:
+          name: jacoco-report
+          path: target/site/jacoco
