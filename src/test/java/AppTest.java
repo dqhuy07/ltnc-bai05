@@ -5,16 +5,26 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class AppTest {
   @Test
   public void testOne() {
-    assertEquals(App.add(1,0),1);
+    assertEquals(5, App.add(2,3));
   }
 
   @Test
   public void TestTwo() {
-    assertEquals(App.add(1,-3),-2);
+    assertEquals(-5,App.add(-2,-3));
   }
 
   @Test
   public void testThree() {
-    assertEquals(App.add(0,0),0);
+    assertEquals(-1,App.add(2,-3));
+  }
+
+  @Test
+  public void testFour() {
+    assertEquals(3,App.add(3,0));
+  }
+
+  @Test
+  public void testFive() {
+    assertEquals(Integer.MAX_VALUE, App.add(Integer.MAX_VALUE, 0));
   }
 }
