@@ -5,12 +5,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    step:
+    steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Set up JDK
-        uses: action/setup-java@v4
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
@@ -18,7 +18,7 @@ jobs:
       - run: mvn clean verify
 
       - name: Upload jar
-        uses: action/upload-artifact@v4
+        uses: actions/upload-artifact@v4
         if: alway()
         with:
           name: jacoco-report
